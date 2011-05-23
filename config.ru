@@ -1,3 +1,3 @@
 require "rubygems"
-require "./hertz"
+require "hertz"
 run Sinatra::Application
