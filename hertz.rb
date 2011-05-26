@@ -24,10 +24,10 @@ MIN_DURATION = 1.5
 MAX_CHR_PER_LINE = 37
 CHR_PER_SECOND = 15
 START_TIME = 36000.0 
-CYAN = /ROLAND/ # Cyan # 00FFFF
+CYAN = /BERNHEIMER/ # Cyan # 00FFFF
 MAGENTA = /KAREN/ # FF00FF
 GREEN = /ISABELLE/ # 00FF00
-WHITE = /LUCAS|ALOIS|VICKY|ANTONIO|STELLA/ #FFFFFF
+WHITE = /LUCAS|LUKAS|ALOIS|VICKY|ANTONIO|STELLA/ #FFFFFF
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -42,7 +42,6 @@ class LenaParser
      @tc = START_TIME
 
      complete_text = file.read
-     #complete_text.encode!('utf-8', 'utf-8')
      complete_text.scan(/^([A-Z]+\s*[A-Z]*)\t(.+)/) do |speaker, text|
        clean_text(text)
        if text.length > MAX_CHR_PER_LINE*2
@@ -221,8 +220,8 @@ post '/' do
       @newxml.close
       t = Time.now
       send_file @newxml.path, :type => 'xml', :disposition => 'attachment', :filename => "#{name.sub(/.txt/i, "")}-#{t.strftime("%d%m%y%H%M%S")}"
-   # rescue
-   #    @error = "PROBLEM WITH FILE: Check that you have uploaded the correct file format"
-   #    return erb :form
+   rescue
+      @error = "PROBLEM WITH FILE: Check that you have uploaded the correct file format"
+      return erb :form
    end
 end

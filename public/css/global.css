@@ -1,5 +1,7 @@
 /* @override http://localhost:4567/css/global.css */
 
+/* @override http://localhost:4567/css/global.css */
+
 /* reset.css */
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
 article, aside, dialog, figure, footer, header, hgroup, nav, section {display:block;}
@@ -45,26 +47,27 @@ li#magenta{
 
 ul.speakerColours li{
 	background-color: #000;
-	width: 150px;
+	width: 350px;
 	padding: 2px;
 	margin-top: 3px;
 	margin-bottom: 3px;
 	font-family: Arial, Arial, Helvetica, sans-serif;
+	text-align: center;
 }
 
 li#Cyan {
 	color: #00ffff;
-	background-color: #000;
-	width: 150px;
 }
 
 li#green {
 	color: #0f0;
-	background-color: #000;
-	width: 150px;
 }
 
 #version {
 	font-size: 15px;
 	color: #bbc1d2;
+}
+
+li#white {
+	color: #fff;
 }
