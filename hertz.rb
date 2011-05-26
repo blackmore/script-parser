@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'rubygems'
 require 'sinatra'
 require 'builder'
@@ -198,6 +200,8 @@ end
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # ROUTES
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# file = File.open("/Users/nigel/Desktop/dialoge-hf-47-eg.txt")
+# puts build_DFXL.call(LenaParser.new(file, "dialoge-hf-47-eg.txt"))
 
 get '/' do
   erb :form
@@ -215,9 +219,10 @@ post '/' do
       @newxml = Tempfile.new("_NEW#{name}")
       @newxml.puts build_DFXL.call(LenaParser.new(tmpfile, name))
       @newxml.close
-      send_file @newxml.path, :type => 'xml', :disposition => 'attachment', :filename => "#{name.sub(/.txt/i, "")}-#{Time.now}"
-   #rescue
-    #  @error = "PROBLEM WITH FILE: Check that you have uploaded the correct file format"
-     # return erb :form
+      t = Time.now
+      send_file @newxml.path, :type => 'xml', :disposition => 'attachment', :filename => "#{name.sub(/.txt/i, "")}-#{t.strftime("%d%m%y%H%M%S")}"
+   rescue
+      @error = "PROBLEM WITH FILE: Check that you have uploaded the correct file format"
+      return erb :form
    end
 end
