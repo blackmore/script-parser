@@ -221,8 +221,8 @@ post '/' do
       @newxml.close
       t = Time.now
       send_file @newxml.path, :type => 'xml', :disposition => 'attachment', :filename => "#{name.sub(/.txt/i, "")}-#{t.strftime("%d%m%y%H%M%S")}"
-   rescue
-      @error = "PROBLEM WITH FILE: Check that you have uploaded the correct file format"
-      return erb :form
+   # rescue
+   #    @error = "PROBLEM WITH FILE: Check that you have uploaded the correct file format"
+   #    return erb :form
    end
 end
