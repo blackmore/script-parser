@@ -42,7 +42,7 @@ class LenaParser
      @tc = START_TIME
 
      complete_text = file.read
-     complete_text.encode!('utf-8', 'utf-8')
+     #complete_text.encode!('utf-8', 'utf-8')
      complete_text.scan(/^([A-Z]+\s*[A-Z]*)\t(.+)/) do |speaker, text|
        clean_text(text)
        if text.length > MAX_CHR_PER_LINE*2
