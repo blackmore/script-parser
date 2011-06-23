@@ -42,7 +42,7 @@ class LenaParser
      @tc = START_TIME
 
      complete_text = file.read
-     complete_text.scan(/^(\w+)\t(.+)/) do |speaker, text|
+     complete_text.scan(/(\w+)\t(.+)/) do |speaker, text|
        clean_text(text)
        if text.length > MAX_CHR_PER_LINE*2
           split_on_sentences(speaker, text)
@@ -99,10 +99,10 @@ class LenaParser
       if speaker
         speaker[1]
       else
-        "NO_SPEAKER"
+        "SPEAKER"
       end
     else
-      "NO_SPEAKER"
+      "SPEAKER"
     end
   end
  
