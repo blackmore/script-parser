@@ -42,7 +42,7 @@ class LenaParser
      @tc = START_TIME
 
      complete_text = file.read
-     complete_text.scan(/^([A-Z]+\s*[A-Z]*)\t(.+)/) do |speaker, text|
+     complete_text.scan(/^(\w+)\t(.+)/) do |speaker, text|
        clean_text(text)
        if text.length > MAX_CHR_PER_LINE*2
           split_on_sentences(speaker, text)
@@ -95,7 +95,7 @@ class LenaParser
   def clean_speaker(string)
     if string
       string.upcase!
-      speaker = /([A-Z]+)/.match(string)
+      speaker = /(\w+)/.match(string)
       if speaker
         speaker[1]
       else
