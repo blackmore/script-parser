@@ -1,2 +1,2 @@
-require 'hertz'
+require './hertz'
 run Sinatra::Application
